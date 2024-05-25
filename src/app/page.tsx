@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Home() {
   const dispatch = useDispatch();
   const popular = useSelector((store: any) => store.movies.popularMovies);
-  console.log(TMDB_API_OPTIONS.headers.Authorization);
 
   useEffect(() => {
     const fetchData = async () => {
