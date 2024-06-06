@@ -1,15 +1,18 @@
 import { IMG_CDN_URL } from "@/utils/constants";
+import Link from "next/link";
 
 interface MovieCardProps {
   posterPath: string | null;
   title: string | null;
   release_date: string | null;
+  id: number | null;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({
   posterPath,
   title,
   release_date,
+  id,
 }) => {
   if (!posterPath) return null;
 
@@ -22,12 +25,16 @@ const MovieCard: React.FC<MovieCardProps> = ({
 
   return (
     <div className="w-36 mr-4 bg-neutral-500 bg-opacity-10  rounded-lg shadow-lg">
-      <img
-        src={IMG_CDN_URL + posterPath}
-        alt="movies Image"
-        className="rounded-lg"
-      />
-      <h1 className="text-white truncate">{title}</h1>
+      <Link href={`/${id}`}>
+        <img
+          src={IMG_CDN_URL + posterPath}
+          alt="movies Image"
+          className="rounded-lg"
+        />
+      </Link>
+      <Link href={`/${id}`}>
+        <h1 className="text-white truncate hover:text-neutral-600">{title}</h1>
+      </Link>
       <h3 className="text-gray-200">{formatDate(release_date)}</h3>
     </div>
   );
