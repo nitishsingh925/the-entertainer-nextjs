@@ -1,9 +1,11 @@
+import { TMDB_ACCESS_TOKEN } from "./envHandler";
+
 // TMDB
 export const TMDB_API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_READ_ACCESS_TOKEN}`,
+    Authorization: `Bearer ${TMDB_ACCESS_TOKEN}`,
   },
 };
 export const API_TMDB = "https://api.themoviedb.org/3/movie/";
