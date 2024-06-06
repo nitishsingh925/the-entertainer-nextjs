@@ -8,7 +8,7 @@ const MoviesListContainer = () => {
   const movies = useSelector((store: any) => store.movies);
 
   return (
-    <div className="bg-neutral-900">
+    <div>
       <MovieList title="Popular Movies" movies={movies?.popularMovies} />
     </div>
   );
