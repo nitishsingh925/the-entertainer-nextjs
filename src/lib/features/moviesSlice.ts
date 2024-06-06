@@ -3,10 +3,12 @@ import type { RootState } from "@/lib/store";
 
 export interface MoviesState {
   popularMovies: null | any[];
+  upcomingMovies: null | any[];
 }
 
 const initialState: MoviesState = {
   popularMovies: null,
+  upcomingMovies: null,
 };
 
 export const moviesSlice = createSlice({
@@ -16,12 +18,12 @@ export const moviesSlice = createSlice({
     addPopularMovies: (state, action: PayloadAction<any[]>) => {
       state.popularMovies = action.payload;
     },
+    addUpcomingMovies: (state, action: PayloadAction<any[]>) => {
+      state.upcomingMovies = action.payload;
+    },
   },
 });
 
-export const { addPopularMovies } = moviesSlice.actions;
-
-export const selectPopularMovies = (state: RootState) =>
-  state.movies.popularMovies;
+export const { addPopularMovies, addUpcomingMovies } = moviesSlice.actions;
 
 export default moviesSlice.reducer;
