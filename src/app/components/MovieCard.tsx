@@ -25,14 +25,14 @@ const MovieCard: React.FC<MovieCardProps> = ({
 
   return (
     <div className="w-36 mr-4 bg-neutral-500 bg-opacity-10  rounded-lg shadow-lg">
-      <Link href={`/${id}`}>
+      <Link href={`movie/${id}`}>
         <img
           src={IMG_CDN_URL + posterPath}
           alt="movies Image"
           className="rounded-lg"
         />
       </Link>
-      <Link href={`/${id}`}>
+      <Link href={`movie/${id}`}>
         <h1 className="text-white truncate hover:text-neutral-600">{title}</h1>
       </Link>
       <h3 className="text-gray-200">{formatDate(release_date)}</h3>

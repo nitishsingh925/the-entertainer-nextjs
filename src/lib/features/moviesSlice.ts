@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "@/lib/store";
 
 export interface MoviesState {
   popularMovies: null | any[];
   upcomingMovies: null | any[];
+  findById: null | any[];
 }
 
 const initialState: MoviesState = {
   popularMovies: null,
   upcomingMovies: null,
+  findById: null,
 };
 
 export const moviesSlice = createSlice({
@@ -21,9 +22,13 @@ export const moviesSlice = createSlice({
     addUpcomingMovies: (state, action: PayloadAction<any[]>) => {
       state.upcomingMovies = action.payload;
     },
+    addFindById: (state, action: PayloadAction<any>) => {
+      state.findById = action.payload;
+    },
   },
 });
 
-export const { addPopularMovies, addUpcomingMovies } = moviesSlice.actions;
+export const { addPopularMovies, addUpcomingMovies, addFindById } =
+  moviesSlice.actions;
 
 export default moviesSlice.reducer;
