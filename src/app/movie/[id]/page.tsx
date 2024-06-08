@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import useFindById from "@/app/hooks/useFindById";
+import useFindById from "@/hooks/useFindById";
 import { useSelector } from "react-redux";
 import { IMG_CDN_URL, IMG_CDN_URL_LARGE } from "@/utils/constants";
 

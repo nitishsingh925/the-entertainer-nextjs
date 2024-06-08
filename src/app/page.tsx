@@ -1,5 +1,5 @@
 "use client";
-import MoviesListContainer from "./components/MoviesListContainer";
+import MoviesListContainer from "@/components/MoviesListContainer";
 
 export default function Home() {
   return (

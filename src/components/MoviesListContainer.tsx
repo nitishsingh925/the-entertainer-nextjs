@@ -1,8 +1,8 @@
 import React from "react";
 import MovieList from "./MovieList";
-import usePopularMovies from "../hooks/usePopularMovies";
+import usePopularMovies from "@/hooks/usePopularMovies";
 import { useSelector } from "react-redux";
-import useUpcomingMovies from "../hooks/useUpcomingMovies";
+import useUpcomingMovies from "@/hooks/useUpcomingMovies";
 
 const MoviesListContainer = () => {
   usePopularMovies();
