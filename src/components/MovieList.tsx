@@ -1,5 +1,6 @@
 import React from "react";
 import MovieCard from "./MovieCard";
+import Link from "next/link";
 
 interface IMovie {
   id: number;
@@ -10,13 +11,16 @@ interface IMovie {
 
 interface IMovieListProps {
   title: string;
+  routeLink: string;
   movies: IMovie[];
 }
 
-const MovieList: React.FC<IMovieListProps> = ({ title, movies }) => {
+const MovieList: React.FC<IMovieListProps> = ({ title, routeLink, movies }) => {
   return (
     <div className="px-6">
-      <h1 className="text-lg md:text-3xl py-4 text-white">{title}</h1>
+      <Link href={routeLink}>
+        <h1 className="text-lg md:text-3xl py-4 text-white">{title}</h1>
+      </Link>
       <div className="flex overflow-x-auto no-scrollbar">
         <div className="flex">
           {movies?.map((movie: IMovie) => (

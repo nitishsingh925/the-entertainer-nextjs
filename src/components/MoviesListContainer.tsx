@@ -11,8 +11,16 @@ const MoviesListContainer = () => {
 
   return (
     <div>
-      <MovieList title="Popular Movies" movies={movies?.popularMovies} />
-      <MovieList title="Upcoming Movies" movies={movies?.upcomingMovies} />
+      <MovieList
+        title="Popular Movies"
+        routeLink="popular"
+        movies={movies?.popularMovies}
+      />
+      <MovieList
+        title="Upcoming Movies"
+        routeLink="upcoming"
+        movies={movies?.upcomingMovies}
+      />
     </div>
   );
 };
