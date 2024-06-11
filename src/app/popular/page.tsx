@@ -10,7 +10,7 @@ const PopularMoviesPage = () => {
   const { popularMovies } = useSelector((store: any) => store.movies);
   return (
     <div className="px-6 py-4 bg-neutral-800">
-      <Link href={"/"} className="text-white">
+      <Link href={"/"} prefetch className="text-white">
         Go Back
       </Link>
       <h1 className="text-2xl md:text-4xl py-4 text-center text-white">

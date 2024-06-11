@@ -3,6 +3,8 @@ import React from "react";
 import useFindById from "@/hooks/useFindById";
 import { useSelector } from "react-redux";
 import { IMG_CDN_URL, IMG_CDN_URL_LARGE } from "@/utils/constants";
+import Link from "next/link";
+import Image from "next/image";
 
 interface PageProps {
   params: {
@@ -31,11 +33,16 @@ const Page: React.FC<PageProps> = ({ params }) => {
     >
       <div className="bg-black bg-opacity-70 min-h-screen flex justify-center items-center">
         <div className="max-w-4xl mx-auto p-4 text-white">
+          <Link href={"/"} prefetch className="text-white">
+            Go Back
+          </Link>
           <h1 className="text-3xl font-bold mb-4">{movie.title}</h1>
-          <img
+          <Image
             src={`${IMG_CDN_URL}${movie.poster_path}`}
             alt={movie.title}
             className="w-full max-w-xs mb-4 rounded-lg shadow-lg"
+            width={500}
+            height={500}
           />
           <p className="italic text-gray-300 mb-4">{movie.tagline}</p>
           <p className="mb-4">{movie.overview}</p>
