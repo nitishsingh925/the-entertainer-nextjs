@@ -11,11 +11,13 @@ const MoviesListContainer = () => {
 
   return (
     <div>
+      {/* for Popular Movies List */}
       <MovieList
         title="Popular Movies"
         routeLink="popular"
         movies={movies?.popularMovies}
       />
+      {/* for Upcoming Movies List */}
       <MovieList
         title="Upcoming Movies"
         routeLink="upcoming"

@@ -18,9 +18,9 @@ interface IMovieListProps {
 const MovieList: React.FC<IMovieListProps> = ({ title, routeLink, movies }) => {
   return (
     <div className="px-6">
-      <Link href={routeLink}>
-        <h1 className="text-lg md:text-3xl py-4 text-white">{title}</h1>
-      </Link>
+      <h1 className="text-lg md:text-3xl py-4 text-white">
+        <Link href={routeLink}>{title}</Link>
+      </h1>
       <div className="flex overflow-x-auto no-scrollbar">
         <div className="flex">
           {movies?.map((movie: IMovie) => (
