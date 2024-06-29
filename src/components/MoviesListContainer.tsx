@@ -27,7 +27,7 @@ const MoviesListContainer = () => {
   }, [fetchPopularMovies, fetchUpcomingMovies]);
 
   return (
-    <div className=" bg-neutral-800 h-screen ">
+    <div className="bg-neutral-800">
       {isLoading ? (
         <>
           <Shimmer title={"Popular Movies"} />
