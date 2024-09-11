@@ -1,4 +1,4 @@
-# Live https://the-entertainer-nextjs.vercel.app/
+# Live https://the-entertainer-nextjs.vercel.app
 
 ## Getting Started
 
