@@ -1,10 +1,25 @@
 "use client";
 import React from "react";
-import useFindById from "@/hooks/useFindById";
-import { useSelector } from "react-redux";
-import { IMG_CDN_URL, IMG_CDN_URL_LARGE } from "@/utils/constants";
+import { useQuery } from "@tanstack/react-query";
+import {
+  API_TMDB,
+  TMDB_API_OPTIONS,
+  IMG_CDN_URL,
+  IMG_CDN_URL_LARGE,
+} from "@/utils/constants";
 import Link from "next/link";
 import Image from "next/image";
+
+const fetchMovieById = async (id: number) => {
+  console.log("Fetching movie with ID:", id);
+  const response = await fetch(`${API_TMDB}/${id}`, TMDB_API_OPTIONS);
+  if (!response.ok) throw new Error("Failed to fetch movie data");
+
+  const data = await response.json();
+  console.log("Fetched movie data:", data);
+
+  return data;
+};
 
 interface PageProps {
   params: {
@@ -12,14 +27,37 @@ interface PageProps {
   };
 }
 
-const Page: React.FC<PageProps> = ({ params }) => {
-  const movie = useSelector((store: any) => store.movies?.findById);
-  useFindById(params.id);
+const Page: React.FC<PageProps> = ({ params: { id } }) => {
+  const {
+    data: movie,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["movie", id],
+    queryFn: () => fetchMovieById(id),
+    enabled: !!id, // Ensure the query is only run if the id is truthy
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p>Error fetching movie details</p>
+      </div>
+    );
+  }
 
   if (!movie) {
     return (
       <div className="flex justify-center items-center h-screen">
-        Loading...
+        <p>Movie not found</p>
       </div>
     );
   }
@@ -33,7 +71,7 @@ const Page: React.FC<PageProps> = ({ params }) => {
     >
       <div className="bg-black bg-opacity-70 min-h-screen flex justify-center items-center">
         <div className="max-w-4xl mx-auto p-4 text-white">
-          <Link href={"/"} prefetch className="text-white">
+          <Link href="/" prefetch className="text-white">
             Go Back
           </Link>
           <h1 className="text-3xl font-bold mb-4">{movie.title}</h1>

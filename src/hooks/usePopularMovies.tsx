@@ -1,30 +1,22 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addPopularMovies } from "@/lib/features/moviesSlice";
+import { useQuery } from "@tanstack/react-query";
 import { API_TMDB, TMDB_API_OPTIONS } from "@/utils/constants";
 
+const fetchPopularMovies = async (pageNo: number) => {
+  const response = await fetch(
+    `${API_TMDB}/popular?language=en-US&page=${pageNo}`,
+    TMDB_API_OPTIONS
+  );
+  if (!response.ok) throw new Error("Failed to fetch popular movies");
+
+  const data = await response.json();
+  return data;
+};
+
 const usePopularMovies = (pageNo: number = 1) => {
-  const dispatch = useDispatch();
-  const popularMovies = useSelector((store: any) => store.movies.popularMovies);
-
-  useEffect(() => {
-    const fetchData = async (pageNo: number) => {
-      try {
-        const res = await fetch(
-          `${API_TMDB}/popular?language=en-US&page=${pageNo}`,
-          TMDB_API_OPTIONS
-        );
-        const data = await res.json();
-        dispatch(addPopularMovies(data.results));
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData(pageNo);
-  }, [dispatch, popularMovies?.length]);
-
-  return popularMovies;
+  return useQuery({
+    queryKey: ["popular", pageNo],
+    queryFn: () => fetchPopularMovies(pageNo),
+  });
 };
 
 export default usePopularMovies;
