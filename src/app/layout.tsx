@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import QueryProvider from "./QueryProvider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ModeToggle } from "@/components/them-switcher";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +20,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-neutral-800">
+    <html lang="en">
       <body className={inter.className}>
         <QueryProvider>
-          <StoreProvider>{children}</StoreProvider>
+          <StoreProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+              {children}
+            </ThemeProvider>
+          </StoreProvider>
         </QueryProvider>
       </body>
     </html>

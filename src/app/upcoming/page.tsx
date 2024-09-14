@@ -9,11 +9,11 @@ const UpcomingMoviesPage = () => {
   useUpcomingMovies(1); // Fetch upcoming movies with page number 1
   const { upcomingMovies } = useSelector((store: any) => store.movies);
   return (
-    <div className="px-6 py-4 bg-neutral-800">
-      <Link href={"/"} prefetch className="text-white">
+    <div className="px-6 py-4">
+      <Link href={"/"} prefetch>
         Go Back
       </Link>
-      <h1 className="text-2xl md:text-4xl py-4 text-center text-white">
+      <h1 className="text-2xl md:text-4xl py-4 text-center ">
         Upcoming Movies
       </h1>
       <div className="flex flex-wrap justify-center">

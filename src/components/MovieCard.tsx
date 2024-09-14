@@ -25,7 +25,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
   };
 
   return (
-    <div className="w-36 mr-4 bg-neutral-500 bg-opacity-10  rounded-lg shadow-lg">
+    <div className="w-36 mr-4 rounded-lg shadow-lg">
       <Link href={`movie/${id}`} prefetch>
         <Image
           src={IMG_CDN_URL + posterPath}
@@ -36,9 +36,9 @@ const MovieCard: React.FC<MovieCardProps> = ({
         />
       </Link>
       <Link href={`movie/${id}`} prefetch>
-        <h1 className="text-white truncate hover:text-neutral-600">{title}</h1>
+        <h1 className=" truncate ">{title}</h1>
       </Link>
-      <h3 className="text-gray-200">{formatDate(release_date)}</h3>
+      <h3 className="">{formatDate(release_date)}</h3>
     </div>
   );
 };

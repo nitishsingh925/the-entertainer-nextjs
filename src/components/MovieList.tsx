@@ -18,7 +18,7 @@ interface IMovieListProps {
 const MovieList: React.FC<IMovieListProps> = ({ title, routeLink, movies }) => {
   return (
     <div className="px-6">
-      <h1 className="text-lg md:text-3xl py-4 text-white">
+      <h1 className="text-lg md:text-3xl py-4 ">
         <Link href={routeLink} prefetch>
           {title}
         </Link>

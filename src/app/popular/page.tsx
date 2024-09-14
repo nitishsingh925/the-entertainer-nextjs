@@ -19,13 +19,11 @@ const PopularMoviesPage = () => {
   }
 
   return (
-    <div className="px-6 py-4 bg-neutral-800">
-      <Link href="/" prefetch className="text-white">
+    <div className="px-6 py-4">
+      <Link href="/" prefetch>
         Go Back
       </Link>
-      <h1 className="text-2xl md:text-4xl py-4 text-center text-white">
-        Popular Movies
-      </h1>
+      <h1 className="text-2xl md:text-4xl py-4 text-center">Popular Movies</h1>
       <div className="flex flex-wrap justify-center">
         {popularMovies.map((movie: any) => (
           <MovieCard

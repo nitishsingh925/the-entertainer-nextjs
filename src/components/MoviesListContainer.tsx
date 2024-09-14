@@ -18,7 +18,7 @@ const MoviesListContainer = () => {
 
   if (isLoadingPopular || isLoadingUpcoming) {
     return (
-      <div className="bg-neutral-800">
+      <div className="">
         <Shimmer title="Popular Movies" />
         <Shimmer title="Upcoming Movies" />
       </div>
@@ -27,16 +27,14 @@ const MoviesListContainer = () => {
 
   if (errorPopular || errorUpcoming) {
     return (
-      <div className="bg-neutral-800">
-        <p className="text-white">
-          Error fetching movies. Please try again later.
-        </p>
+      <div className="">
+        <p className="">Error fetching movies. Please try again later.</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-neutral-800">
+    <div className="">
       <MovieList
         title="Popular Movies"
         routeLink="/popular"
